@@ -159,7 +159,7 @@ function getRandomInt(max, min) {
   return integ
 };
 
-var docSelectors = ["document.getElementById", "document.getElementByClassName", "document.querySelector"];
+var docSelectors = ["getElementById", "getElementByClassName", "querySelector"];
 var docEls = ["h1", "p", "a"];
 
 var ids = ['trigger', 'content'];
@@ -213,7 +213,7 @@ var assemble = function (selector) {
 	};
 	var itemType = getRelatedItem(matchSelector(selector));
 
-	var trigger = selector+"('"+itemType+"')";
+	var trigger = document[selector](itemType);
 	console.log('trigger is '+trigger);
 	return trigger
 }
@@ -221,9 +221,9 @@ var assemble = function (selector) {
 var funTriggerButton = assemble(selector);
 console.log('fun trigger button is '+funTriggerButton);
 
-// funTriggerButton.addEventListener('click', function() {
-//   myModal.open();
-// });
+funTriggerButton.addEventListener('click', function() {
+  myModal.open();
+});
 
 var triggerButton = document.getElementById('trigger');
 
